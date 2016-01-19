@@ -44,6 +44,20 @@ paths:
             $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
+  /ping:
+    x-swagger-router-controller: ping
+    get:
+      description: Returns 'Pong' to the caller
+      operationId: ping
+      produces:
+        - text/html
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+
+
 # complex objects have schema definitions
 definitions:
   HelloWorldResponse:
@@ -58,3 +72,5 @@ definitions:
     properties:
       message:
         type: string
+
+
