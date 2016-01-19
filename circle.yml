@@ -1,0 +1,14 @@
+machine:
+  timezone:
+    Asia/Seoul
+  node:
+    version: 0.10.22
+
+dependencies:
+  override:
+    - npm install
+    - npm install -g swagger
+
+test:
+  override:
+    - npm test
