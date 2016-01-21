@@ -14,5 +14,9 @@ before_install:
 install:
   - npm install
 
+before_script: mkdir -p shippable/codecoverage
+
 script:
   - test_cov
+
+after_script: mv -rf ./coverage/* shippable/codecoverage
