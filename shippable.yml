@@ -8,7 +8,7 @@ before_install:
 # Activate the required node.js version
   - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
   - node --version
-  - npm install -g swagger
+  - npm install -g swagger istanbul
 
 #install the required dependencies
 install:
@@ -17,6 +17,6 @@ install:
 before_script: mkdir -p shippable/codecoverage
 
 script:
-  - test_cov
+  - istanbul cover node_modules/.bin/_mocha test/api/controllers/hello_world.js
 
 after_script: mv -rf ./coverage/* shippable/codecoverage
