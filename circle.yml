@@ -4,11 +4,23 @@ machine:
   node:
     version: 0.10.22
 
+general:
+  artifacts:
+    - "coverage" # relative to the build directory
+    - "app.js"
 dependencies:
   override:
     - npm install
-    - npm install -g swagger
+    - npm install -g swagger istanbul
 
 test:
   override:
-    - npm test_cov
+    - istanbul cover node_modules/.bin/_mocha test/api/controllers/hello_world.js
+  post:
+    - cp coverage $CIRCLE_ARTIFACTS/
+
+    - mkdir -p $CIRCLE_ARTIFACTS/app
+    - cp app.js $CIRCLE_ARTIFACTS/app/
+    - cp api $CIRCLE_ARTIFACTS/app/
+    - cp config $CIRCLE_ARTIFACTS/app/
+    - cp package.json $CIRCLE_ARTIFACTS/app/
