@@ -19,4 +19,4 @@ before_script: mkdir -p shippable/codecoverage
 script:
   - istanbul cover node_modules/.bin/_mocha test/api/controllers/hello_world.js
 
-after_script: mv -rf ./coverage/* shippable/codecoverage
+after_script: mv ./coverage/* shippable/codecoverage
