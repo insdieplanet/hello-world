@@ -17,10 +17,10 @@ test:
   override:
     - istanbul cover node_modules/.bin/_mocha test/api/controllers/hello_world.js
   post:
-    - cp coverage $CIRCLE_ARTIFACTS/
+    - cp coverage $CIRCLE_ARTIFACTS/coverage
 
     - mkdir -p $CIRCLE_ARTIFACTS/app
     - cp app.js $CIRCLE_ARTIFACTS/app/
-    - cp api $CIRCLE_ARTIFACTS/app/
-    - cp config $CIRCLE_ARTIFACTS/app/
+    - cp api $CIRCLE_ARTIFACTS/app/api
+    - cp config $CIRCLE_ARTIFACTS/app/config
     - cp package.json $CIRCLE_ARTIFACTS/app/
