@@ -1,0 +1,18 @@
+# language setting
+language: node_js
+
+node_js:
+  - 0.12
+
+before_install:
+# Activate the required node.js version
+  - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
+  - node --version
+  - npm install -g swagger
+
+#install the required dependencies
+install:
+  - npm install
+
+script:
+  - test_cov
